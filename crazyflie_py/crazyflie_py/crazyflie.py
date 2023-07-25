@@ -344,7 +344,7 @@ class Crazyflie:
             pieceOffset (int): TODO(whoenig): explain this.
             trajectory (:obj:`pycrazyswarm.uav_trajectory.Trajectory`): Trajectory object.
         """
-        pieces = []
+        pieces = []  # preprocess the data for UploadTrajectory.Request()
         for poly in trajectory.polynomials:
             piece = TrajectoryPolynomialPiece()
             piece.duration = rclpy.duration.Duration(seconds=poly.duration).to_msg()
@@ -353,7 +353,7 @@ class Crazyflie:
             piece.poly_z   = poly.pz.p.tolist()
             piece.poly_yaw = poly.pyaw.p.tolist()
             pieces.append(piece)
-        req = UploadTrajectory.Request()
+        req = UploadTrajectory.Request()  # UploadTrajectory_Request
         req.trajectory_id = trajectoryId
         req.piece_offset = pieceOffset
         req.pieces = pieces
