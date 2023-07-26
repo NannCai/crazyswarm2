@@ -88,32 +88,6 @@ def multi_traj():
     timeHelper.sleep(togo_time + 1)
     allcfs.land(targetHeight=0.06, duration=2.0)
 
-
-    quit()
-
-
-
-    traj1 = data[0]
-    states = traj1['states']  # list len 73
-    # print(type(states))  # list 
-    #initial position
-    pos = np.append(np.array(states[0]), height)
-    print('pos',pos)
-    for cf in allcfs.crazyflies:
-        cf.goTo(pos, 0, 2.0)  # goal yaw duration
-    timeHelper.sleep(2)
-
-    for state in states[1:]:  # state list
-        print('state:',state)
-        pos = np.append(np.array(state), height)
-        for cf in allcfs.crazyflies:
-            cf.goTo(pos, 0, 6.0)  # goal yaw duration
-        print('1')
-
-    timeHelper.sleep(5)
-    allcfs.land(targetHeight=0.06, duration=2.0)
-
-
 def main():
     # one_traj()
     multi_traj()
