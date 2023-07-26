@@ -15,7 +15,7 @@ save the xyz format and use uav gen to visualise it
 '''
 def main():
     # load yaml file contains smooth waypoint
-    yaml_path = Path(__file__).parent / "data/result_ompl.yaml"
+    yaml_path = Path(__file__).parent / "data/result_ompl2.yaml"
     with open(yaml_path, 'r') as ymlfile:
         data = yaml.safe_load(ymlfile)['result']  # a list  elements are dictionaries
     print('load finish')
