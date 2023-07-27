@@ -20,27 +20,23 @@ def one_traj():
     with open(yaml_path, 'r') as ymlfile:
         data = yaml.safe_load(ymlfile)['result']  # a list  elements are dictionaries
     print('load finish')
-
     traj1 = data[0]
     states = traj1['states']  # list len 73
 
     allcfs.takeoff(targetHeight=1.0, duration=2.0)
     timeHelper.sleep(2.5)
-
     #initial position
     pos = np.append(np.array(states[0]), height)
     print('pos',pos)
     for cf in allcfs.crazyflies:
         cf.goTo(pos, 0, 2.0)  # goal yaw duration
     # timeHelper.sleep(2)
-
     for state in states[1:]:  # state list
         print('state:',state)
         pos = np.append(np.array(state), height)
         for cf in allcfs.crazyflies:
             cf.goTo(pos, 0, 6.0)  # goal yaw duration
         print('1')
-
     timeHelper.sleep(5)
     allcfs.land(targetHeight=0.06, duration=2.0)
 
@@ -61,8 +57,6 @@ def multi_traj():
     for i in range(n):
         states = data[i]['states']
         states_list.append(states)
-    # print('states_list',states_list)
-
     allcfs.takeoff(targetHeight=0.5, duration=2.0)
     timeHelper.sleep(2)
     print('number of waypoints:',len(states_list[0]))
@@ -82,10 +76,6 @@ def multi_traj():
                 pos = np.append(np.array(states_list[drone_id][state_id]), height)
                 allcfs.crazyflies[drone_id].goTo(pos, 0, togo_time)
                 print('drone_id',drone_id,'state_id',state_id)
-
-            # timeHelper.sleep(1)
-
-
     timeHelper.sleep(togo_time + 1)
     allcfs.land(targetHeight=0.06, duration=2.0)
 
