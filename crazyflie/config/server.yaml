@@ -3,9 +3,9 @@
     warnings:
       frequency: 1.0 # report/run checks once per second
       motion_capture:
-        warning_if_rate_outside: [80.0, 120.0]
+        warning_if_rate_outside: [50.0, 150.0]
       communication:
-        max_unicast_latency: 10.0 # ms
+        max_unicast_latency: 50.0 # ms
         min_unicast_ack_rate: 0.9
         min_unicast_receive_rate: 0.9 # requires status topic to be enabled
         min_broadcast_receive_rate: 0.9 # requires status topic to be enabled
