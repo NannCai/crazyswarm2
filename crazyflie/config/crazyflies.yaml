@@ -1,34 +1,52 @@
 # named list of all robots
 robots:
-  cf15:
-    enabled: true
-    uri: radio://0/80/2M/E7E7E7E70F
-    initial_position: [0.0, 0.0, 0.0]
-    type: cf21  # see robot_types
-    # firmware_params:
-    #   kalman:
-    #     pNAcc_xy: 1.0 # default 0.5
-    # firmware_logging:
-    #   enabled: true
-    #   custom_topics:
-    #     topic_name3: 
-    #       frequency: 1
-    #       vars: ["acc.x", "acc.y"]
   cf16:
     enabled: true
     uri: radio://0/80/2M/E7E7E7E716
     initial_position: [0.5, 0.0, 0.0]
-    type: cf21  # see robot_types
-    # firmware_params:
-    #   kalman:
-    #     pNAcc_xy: 1.0 # default 0.5
-    #firmware_logging:
-    #  custom_topics:
-    #    topic_name3: 
-    #      frequency: 1
-    #      vars: ["acc.x", "acc.y", "acc.z"]
+    type: cf21  # see robot_types  
+  cf15:
+    enabled: true
+    uri: radio://0/80/2M/E7E7E7E70F
+    initial_position: [0.0, 0.0, 0.0]
+    type: cf4m  # see robot_types
+  # cf17:
+  #   enabled: true
+  #   uri: radio://0/80/2M/E7E7E7E717
+  #   initial_position: [0.0, -0.5, 0.0]
+  #   type: cf21  # see robot_types
+  # cf16:
+  #   enabled: true
+  #   uri: radio://0/80/2M/E7E7E7E716
+  #   initial_position: [0.5, 0.0, 0.0]
+  #   type: cf21  # see robot_types
+
+
+
+
+
 # Definition of the various robot types
 robot_types:
+  cf3m:
+    motion_capture:
+      enabled: true
+      # only if enabled; see motion_capture.yaml
+      marker: three_marker
+      dynamics: default
+    big_quad: false
+    battery:
+      voltage_warning: 3.8  # V
+      voltage_critical: 3.7 # V
+  cf4m:
+    motion_capture:
+      enabled: true
+      # only if enabled; see motion_capture.yaml
+      marker: four_marker
+      dynamics: default
+    big_quad: false
+    battery:
+      voltage_warning: 3.8  # V
+      voltage_critical: 3.7 # V
   cf21:
     motion_capture:
       enabled: true
